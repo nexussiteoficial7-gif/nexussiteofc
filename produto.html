@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+<div class="cart-box">
+    <h2 id="produtoNome"></h2>
+
+    <p id="descricaoProduto"></p>
+
+    <input type="text" id="nick" placeholder="Digite seu nickname do Discord">
+
+    <button onclick="comprar()">Comprar</button>
+
+    <p style="margin-top:20px;font-size:13px;opacity:0.7;">
+    Para adquirir, basta abrir um ticket em nosso servidor,
+    informar o produto desejado e o plano escolhido.
+    Nosso atendimento irá orientar você até a finalização.
+    </p>
+</div>
+
+<script>
+let produto = localStorage.getItem("produtoEscolhido");
+document.getElementById("produtoNome").innerText = produto;
+
+let descricoes = {
+"Nexus Internal":"Painel interno com design especial e programação de alto nível.",
+"Nexus External":"Solução externa moderna com estrutura leve e eficiente.",
+"Nexus Trick":"Projeto focado em precisão estratégica e refinamento técnico.",
+"Nexus iOS":"Versão otimizada para dispositivos iOS com integração avançada."
+};
+
+document.getElementById("descricaoProduto").innerText = descricoes[produto];
+
+function comprar(){
+let nick=document.getElementById("nick").value;
+if(nick===""){
+alert("Digite seu nickname do Discord.");
+return;
+}
+window.open("https://discord.gg/URwgVx36zg","_blank");
+}
+</script>
+
+</body>
+</html>
