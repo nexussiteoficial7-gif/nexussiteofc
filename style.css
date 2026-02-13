@@ -1,0 +1,103 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* BACKGROUND MOVIMENTADO */
+
+.background-animation{
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle at center, #6a00ff33, transparent 70%);
+animation:moveBg 10s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+50%{transform:translate(-10%, -10%);}
+100%{transform:translate(0,0);}
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px;
+animation:fadeDown 1s ease;
+}
+
+.logo{
+font-size:40px;
+color:#7a00ff;
+letter-spacing:5px;
+}
+
+#search{
+padding:10px 15px;
+border:none;
+border-radius:20px;
+background:#111;
+color:white;
+outline:none;
+}
+
+/* CARDS */
+
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+padding:40px;
+}
+
+.card{
+width:250px;
+background:#111;
+border-radius:20px;
+padding:20px;
+text-align:center;
+transition:0.4s;
+transform-style:preserve-3d;
+cursor:pointer;
+animation:fadeUp 1s ease;
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+transition:0.5s;
+}
+
+.card:hover{
+transform:rotateY(10deg) rotateX(5deg) scale(1.05);
+box-shadow:0 0 30px #7a00ff88;
+}
+
+.card:hover img{
+transform:scale(1.05);
+}
+
+/* ANIMAÇÕES */
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-50px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(50px);}
+to{opacity:1;transform:translateY(0);}
+}
