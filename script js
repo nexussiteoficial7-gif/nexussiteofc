@@ -1,0 +1,57 @@
+/* 3D REAL CARDS */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+let rect=card.getBoundingClientRect();
+let x=e.clientX-rect.left;
+let y=e.clientY-rect.top;
+
+let centerX=rect.width/2;
+let centerY=rect.height/2;
+
+let rotateX=-(y-centerY)/15;
+let rotateY=(x-centerX)/15;
+
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+card.style.setProperty('--x', x+'px');
+card.style.setProperty('--y', y+'px');
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0) scale(1)";
+});
+
+card.addEventListener("click",()=>{
+card.style.transform="scale(0.95)";
+});
+});
+
+/* ABRIR PRODUTO */
+
+function openProduct(nome){
+localStorage.setItem("produto",nome);
+document.body.style.opacity="0";
+setTimeout(()=>{
+window.location.href="produto.html";
+},300);
+}
+
+/* PESQUISA */
+
+let search=document.getElementById("search");
+if(search){
+search.addEventListener("keyup",function(){
+let value=this.value.toLowerCase();
+document.querySelectorAll(".card").forEach(card=>{
+if(card.innerText.toLowerCase().includes(value)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+});
+}
